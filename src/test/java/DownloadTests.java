@@ -32,12 +32,14 @@ class DownloadTests {
     void testDownloadHttpClient() throws IOException {
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/download.html");
 
-        WebElement pngLink = driver.findElement(By.xpath("(//a)[2]"));
+//        WebElement pngLink = driver.findElement(By.xpath("(//a)[2]"));
+        WebElement pngLink = driver.findElement(By.xpath("//a[@download = 'webdrivermanager.png']"));
         File pngFile = new File(".", "webdrivermanager.png");
         allureSteps.download(pngLink.getAttribute("href"), pngFile);
         assertThat(pngFile).exists();
 
-        WebElement pdfLink = driver.findElement(By.xpath("(//a)[3]"));
+//        WebElement pdfLink = driver.findElement(By.xpath("(//a)[3]"));
+        WebElement pdfLink = driver.findElement(By.xpath("//a[@download = 'webdrivermanager.pdf']"));
         File pdfFile = new File(".", "webdrivermanager.pdf");
         allureSteps.download(pdfLink.getAttribute("href"), pdfFile);
         assertThat(pdfFile).exists();
